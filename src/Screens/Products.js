@@ -1,10 +1,19 @@
-import React from "react";
+import Axios from "axios";
+import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import Rating from "../Components/Rating";
-import { data } from "../data";
 import "./Css/Products.css";
 function Products({ match }) {
-  const product = data.products.find(
+  const [data,setData] = useState([]);
+
+  useEffect(()=>{
+    Axios.get("http://192.168.1.10:5000/api/products").then(res=>{
+      setData(res);
+    }).catch(err=>{
+      console.log(err);
+    })
+  },[])
+  const product = data?.data?.find(
     (item) => String(item._id) === match.params.id
   );
   if (!product) {
