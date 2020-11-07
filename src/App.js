@@ -1,23 +1,26 @@
-import logo from './logo.svg';
-import './App.css';
-
+import "./App.css";
+import Product from "./Components/Product";
+import { data } from "./data";
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+    <div className="app__grid">
+      <header className="app__row">
+        <div className="app__headerLabel">
+          <p>Shopping Hub</p>
+        </div>
+        <div className="app__headerLinks">
+          <a href="#">Cart</a>
+          <a href="#">Products</a>
+        </div>
       </header>
+      <main className="app__row main">
+        {data.products.map((product) => (
+          <Product key={product._id} product={product}/>
+        ))}
+      </main>
+      <footer className="app__row footer">
+        <p>© SiyahulHaq 2020</p>
+      </footer>
     </div>
   );
 }
