@@ -1,9 +1,11 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import Rating from '../Rating';
 import "./Product.css";
 
 function Product({product}) {
     return (
+      <Link to={`/products/${product._id}`}>
         <div className="product__card">
             <div className="product__cardImage">
               <img src={product.image} alt={product.name} />
@@ -19,6 +21,7 @@ function Product({product}) {
               </p>
             </div>
           </div>
+          </Link>
     )
 }
 

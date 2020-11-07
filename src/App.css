@@ -6,7 +6,6 @@
   flex-direction: column;
 }
 header{
-  grid-area: header;
   background-color: #203040;
   color:#ffffff;
   height: 5rem;
@@ -24,7 +23,13 @@ footer{
 }
 a{
   text-decoration: none;
-  color:#ffff;
+  color:#000;
+}
+.app__headerLinks a{
+  color:#fff;
+}
+.app__headerLabel a{
+  color:#fff;
 }
 .app__row{
   display: flex;

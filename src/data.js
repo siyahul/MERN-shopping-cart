@@ -10,6 +10,7 @@ export const data = {
         "https://store.storeimages.cdn-apple.com/4668/as-images.apple.com/is/iphone-12-family-select-2020?wid=470&amp;hei=556&amp;fmt=jpeg&amp;qlt=95&amp;op_usm=0.5,0.5&amp;.v=1604343709000",
       rating: 4.5,
       numReviews:11,
+      countInStock:100,
     },
     {
       _id: 2,
@@ -21,6 +22,7 @@ export const data = {
         "https://store.storeimages.cdn-apple.com/4668/as-images.apple.com/is/iphone-12-family-select-2020?wid=470&amp;hei=556&amp;fmt=jpeg&amp;qlt=95&amp;op_usm=0.5,0.5&amp;.v=1604343709000",
       rating: 5,
       numReviews:12,
+      countInStock:80,
     },
     {
       _id: 3,
@@ -32,6 +34,7 @@ export const data = {
         "https://store.storeimages.cdn-apple.com/4668/as-images.apple.com/is/iphone-12-family-select-2020?wid=470&amp;hei=556&amp;fmt=jpeg&amp;qlt=95&amp;op_usm=0.5,0.5&amp;.v=1604343709000",
       rating: 3.5,
       numReviews:13,
+      countInStock:22,
     },
     {
       _id: 4,
@@ -43,6 +46,7 @@ export const data = {
         "https://store.storeimages.cdn-apple.com/4668/as-images.apple.com/is/iphone-12-family-select-2020?wid=470&amp;hei=556&amp;fmt=jpeg&amp;qlt=95&amp;op_usm=0.5,0.5&amp;.v=1604343709000",
       rating: 4,
       numReviews:16,
+      countInStock:33,
     },
     {
       _id: 5,
@@ -54,6 +58,7 @@ export const data = {
         "https://store.storeimages.cdn-apple.com/4668/as-images.apple.com/is/iphone-12-family-select-2020?wid=470&amp;hei=556&amp;fmt=jpeg&amp;qlt=95&amp;op_usm=0.5,0.5&amp;.v=1604343709000",
       rating: 5,
       numReviews:22,
+      countInStock:0
     },
   ],
 };
