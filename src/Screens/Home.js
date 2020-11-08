@@ -1,20 +1,17 @@
-import React, { useEffect, useState } from "react";
-import axios from "axios";
+import React, { useEffect } from "react";
 import Product from "../Components/Product";
+import { useDispatch, useSelector } from "react-redux";
+import { listProducts } from "../actions/productActions";
 
 function Home() {
-  const [data,setData] = useState([]);
+  const dispatch = useDispatch();
+  const productList = useSelector((state) => state.productList);
   useEffect(() => {
-    axios.get("http://192.168.1.10:5000/api/products").then(res=>{
-      setData(res)
-    }).catch(err=>{
-      console.log(err.message)
-    })
-  }, [])
-  console.log(data)
+    dispatch(listProducts());
+  }, []);
   return (
     <>
-      {data?.data?.map((product) => (
+      {productList?.products?.map((product) => (
         <Product key={product._id} product={product} />
       ))}
     </>

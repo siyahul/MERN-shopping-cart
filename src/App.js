@@ -1,8 +1,15 @@
+import { useDispatch, useSelector } from "react-redux";
 import { BrowserRouter as Router, Link, Route } from "react-router-dom";
+import { clearCart } from "./actions/cartActions";
 import "./App.css";
 import Home from "./Screens/Home";
 import ProductScreen from "./Screens/Products";
 function App() {
+  const cart = useSelector((state) => state.cart);
+  const dispatch = useDispatch();
+  function clear(){
+    dispatch(clearCart())
+  }
   return (
     <Router>
       <div className="app__grid">
@@ -11,8 +18,9 @@ function App() {
             <Link to="/"><p>Shopping Hub</p></Link>
           </div>
           <div className="app__headerLinks">
-            <a href="#">Cart</a>
-            <a href="#">Products</a>
+            <button onClick={clear}>Clear Cart</button>
+            <Link to="/cart">Cart {cart?.length}</Link>
+            <Link to="/signIn">Sign in</Link>
           </div>
         </header>
         <main className="app__row main">

@@ -82,6 +82,10 @@
     color:red;
     font-size: 1.2rem;
 }
+.lowStock{
+    color:orange;
+    font-size: 1.2rem;
+}
 
 @media(max-width:800px){
     .products{
