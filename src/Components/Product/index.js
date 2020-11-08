@@ -15,11 +15,11 @@ function Product({product}) {
               <p>$ {product.price}</p>
             </div>
             <Rating rating={product.rating} numReviews={product.numReviews}/>
-            <div className="product__cardDescription">
+            {/* <div className="product__cardDescription">
               <p>
                 {product.description}
               </p>
-            </div>
+            </div> */}
           </div>
           </Link>
     )

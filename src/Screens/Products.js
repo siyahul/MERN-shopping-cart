@@ -1,11 +1,13 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import { addToCart, removeFromCart } from "../actions/cartActions";
 import { detailsProducts } from "../actions/productActions";
 import Rating from "../Components/Rating";
 import "./Css/Products.css";
 function Products({ match }) {
+  const [qty, setQty] = useState(1);
+  const history = useHistory();
   const dispatch = useDispatch();
   const [inCart, setInCart] = useState(false);
   const productList = useSelector((state) => state.productDetails);
@@ -15,22 +17,25 @@ function Products({ match }) {
   }, []);
   const product = productList.product;
   const addToBasket = () => {
-    dispatch(addToCart(product));
+    dispatch(addToCart(product._id,qty));
   };
   const remove = () => {
     dispatch(removeFromCart(product, cart));
   };
-  useEffect(() => {
+  /* useEffect(() => {
     const index = cart.findIndex(
       (basketItem) => basketItem._id === product._id
     );
     if (index >= 0) {
       setInCart(true);
-    }else{
+    } else {
       setInCart(false);
     }
-  }, [cart,product]);
-
+  }, [cart, product]); */
+  const checkOut = () =>{
+    history.push(`/cart/${product._id}?qty=${qty}`);
+  }
+  console.log(qty);
   if (!product) {
     return (
       <div>
@@ -74,16 +79,36 @@ function Products({ match }) {
               </span>
             )}
             <p>QTY</p>
-            <input type="number" min="1" max="10" />
+            <select className="select"
+              value={qty}
+              onChange={(e) => {
+                setQty(e.target.value);
+              }}
+            >
+              {[...Array(product.countInStock).keys()].map((value) => (
+                <option key={value + 1} value={value + 1}>
+                  {value + 1}
+                </option>
+              ))}
+            </select>
             {product.countInStock > 0 ? (
+              <>
               <button className="addToCart" onClick={addToBasket}>
-              <i class="fa fa-cart-plus" aria-hidden="true"></i> Add To Cart {cart?.length}
+                <i className="fa fa-cart-plus" aria-hidden="true"></i> Add To Cart{" "}
+                {/* cart?.length */}
               </button>
+              <button className="addToCart" onClick={checkOut}>
+               BuyNow
+              </button>
+              </>
             ) : (
               <button className="outOfStock">Out Of Stock</button>
             )}
             {inCart ? (
-              <button className="outOfStock remove" onClick={remove}><i class="fa fa-cart-arrow-down" aria-hidden="true"></i> Remove From cart</button>
+              <button className="outOfStock remove" onClick={remove}>
+                <i class="fa fa-cart-arrow-down" aria-hidden="true"></i> Remove
+                From cart
+              </button>
             ) : (
               <></>
             )}

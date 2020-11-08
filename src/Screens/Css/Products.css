@@ -92,7 +92,13 @@
     cursor: pointer;
     color:#000;
 }
-
+.select{
+    font-size: 1.5rem;
+    padding: 0.5rem;
+    margin: 0.5rem;
+    border-radius: 1rem;
+    outline: none;
+}
 @media(max-width:800px){
     .products{
         flex-direction: column;

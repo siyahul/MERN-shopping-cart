@@ -56,11 +56,19 @@ a{
   flex-wrap: wrap;
 }
 .app__clearBtn{
-  padding:5px;
+  padding:1rem;
   background-color:lightcoral;
   color:white;
   border: none;
   border-radius: 10px;
+}
+.numberOfItems{
+  padding:0.2rem 0.7rem;
+  color: #fff;
+  background-color: #f02020;
+  border-radius: 50%;
+  font-size: 1.4rem;
+  font-weight: 900;
 }
 @media (max-width:500px){
   .app__headerLabel{
