@@ -12,13 +12,11 @@ header{
 }
 main{
   flex: 1;
-  grid-area: main;
   background-color: #ffffff;
   padding: 10px;
 }
 footer{
   height: 5rem;
-  grid-area: footer;
   background-color: #203040;
 }
 a{
@@ -34,13 +32,12 @@ a{
 .app__row{
   display: flex;
   flex-direction: row;
-  flex-wrap: wrap;
   align-items: center;
   justify-content: space-between;
 }
 .app__headerLabel{
   font-size: 3rem;
-  font-weight: bolder;
+  font-weight: 900;
   padding: 10px;
 }
 .app__headerLinks{
@@ -56,4 +53,17 @@ a{
 .main{
   align-items: flex-start;
   justify-content: space-evenly;
+  flex-wrap: wrap;
+}
+.app__clearBtn{
+  padding:5px;
+  background-color:lightcoral;
+  color:white;
+  border: none;
+  border-radius: 10px;
+}
+@media (max-width:500px){
+  .app__headerLabel{
+    font-size: 2.2rem;
+  }
 }

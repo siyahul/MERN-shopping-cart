@@ -8,7 +8,7 @@ import "./Css/Products.css";
 function Products({ match }) {
   const dispatch = useDispatch();
   const [inCart, setInCart] = useState(false);
-  const productList = useSelector((state) => state.productList);
+  const productList = useSelector((state) => state.productDetails);
   const cart = useSelector((state) => state.cart);
   useEffect(() => {
     dispatch(detailsProducts(match.params.id));
@@ -77,13 +77,13 @@ function Products({ match }) {
             <input type="number" min="1" max="10" />
             {product.countInStock > 0 ? (
               <button className="addToCart" onClick={addToBasket}>
-                Add To Cart {cart?.length}
+              <i class="fa fa-cart-plus" aria-hidden="true"></i> Add To Cart {cart?.length}
               </button>
             ) : (
               <button className="outOfStock">Out Of Stock</button>
             )}
             {inCart ? (
-              <button onClick={remove}>Remove From cart</button>
+              <button className="outOfStock remove" onClick={remove}><i class="fa fa-cart-arrow-down" aria-hidden="true"></i> Remove From cart</button>
             ) : (
               <></>
             )}

@@ -18,8 +18,8 @@ function App() {
             <Link to="/"><p>Shopping Hub</p></Link>
           </div>
           <div className="app__headerLinks">
-            <button onClick={clear}>Clear Cart</button>
-            <Link to="/cart">Cart {cart?.length}</Link>
+            <button className="app__clearBtn" onClick={clear}>Clear Cart</button>
+            <Link to="/cart"><i class="fa fa-shopping-cart" style={{fontSize:"1.5rem"}} aria-hidden="true"></i> {cart?.length}</Link>
             <Link to="/signIn">Sign in</Link>
           </div>
         </header>

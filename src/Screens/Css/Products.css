@@ -59,6 +59,7 @@
     font-weight: 900;
     border:none;
     background-color: #ff9900;
+    color:#fff;
     border-radius: 10px;
     cursor: pointer;
 }
@@ -71,6 +72,7 @@
     font-weight: 900;
     border:none;
     background-color: lightgray;
+    color:red;
     border-radius: 10px;
     cursor: not-allowed;
 }
@@ -85,6 +87,10 @@
 .lowStock{
     color:orange;
     font-size: 1.2rem;
+}
+.remove{
+    cursor: pointer;
+    color:#000;
 }
 
 @media(max-width:800px){
