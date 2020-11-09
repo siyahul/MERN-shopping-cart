@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import { addToCart, clearCart, removeFromCart } from "../actions/cartActions";
 import "./Css/cartScreen.css";
 
@@ -10,6 +10,7 @@ function CartScreen(props) {
     ? Number(props.location.search.split("=")[1])
     : 1;
   const dispatch = useDispatch();
+  const history = useHistory();
   const cart = useSelector((state) => state.cart);
   useEffect(() => {
     if (productId) dispatch(addToCart(productId, qty));
@@ -21,10 +22,13 @@ function CartScreen(props) {
       dispatch(removeFromCart(id));
     }
   };
-  function clear() {
+  const clear =()=> {
     if (window.confirm("Are you sure to Clear")) {
       dispatch(clearCart());
     }
+  }
+  const checkout = ()=>{
+    history.push("/signin?redirect=shipping");
   }
   return (
     <div className="cart">
@@ -77,7 +81,7 @@ function CartScreen(props) {
                 0
               )}
             </h1>
-            <button className="cart__checkoutBoxButton">
+            <button className="cart__checkoutBoxButton" onClick={checkout}>
               Proceed To Checkout
             </button>
             <button className="app__clearBtn" onClick={clear}>

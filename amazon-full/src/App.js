@@ -4,6 +4,7 @@ import "./App.css";
 import cartScreen from "./Screens/CartScreen";
 import Home from "./Screens/Home";
 import ProductScreen from "./Screens/Products";
+import SignIn from "./Screens/SignIn";
 function App() {
   const cart = useSelector((state) => state.cart);
   return (
@@ -30,6 +31,7 @@ function App() {
           </div>
         </header>
         <main className="app__row main">
+          <Route path="/signin/" component={SignIn}/>
           <Route path="/cart/:id?" component={cartScreen} />
           <Route path="/products/:id" component={ProductScreen} />
           <Route path="/" component={Home} exact />

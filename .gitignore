@@ -4,7 +4,7 @@
 **node_modules
 /amazon-full/.pnp
 /amazon-full/.pnp.js
-
+data.js
 # testing
 **coverage
 
@@ -22,3 +22,4 @@
 **yarn-debug.log*
 **yarn-error.log*
 **debug.log
+.env
