@@ -1,12 +1,20 @@
-import {  useSelector } from "react-redux";
+import {  useDispatch, useSelector } from "react-redux";
 import { BrowserRouter as Router, Link, Route } from "react-router-dom";
+import { userSignOut } from "./actions/userActions";
 import "./App.css";
 import cartScreen from "./Screens/CartScreen";
 import Home from "./Screens/Home";
 import ProductScreen from "./Screens/Products";
+import Shipping from "./Screens/Shipping";
 import SignIn from "./Screens/SignIn";
 function App() {
   const cart = useSelector((state) => state.cart);
+  const userSignIn = useSelector(state=>state.userSignIn);
+  const dispatch = useDispatch();
+  const {userInfo} =userSignIn;
+  const signOut =()=>{
+    dispatch(userSignOut());
+  }
   return (
     <Router>
       <div className="app__grid">
@@ -26,14 +34,25 @@ function App() {
               {cart?.cartItems?.length>0 ? (
                 <span className="numberOfItems">{cart.cartItems.length}</span>
               ) : null}
-            </Link>
-            <Link to="/signIn">Sign in</Link>
+            </Link>{
+              userInfo && userInfo.status===200?
+              <div className="app__dropDown">
+              <Link to="#"><span>{userInfo.data.name} <i className="fa fa-caret-down"></i></span></Link>
+              <ul>
+                <Link to="#signout" onClick={signOut}>SignOut</Link>
+              </ul>
+              </div>
+              :
+              <Link to="/signin">SignIn</Link>
+            }
+            
           </div>
         </header>
         <main className="app__row main">
-          <Route path="/signin/" component={SignIn}/>
-          <Route path="/cart/:id?" component={cartScreen} />
-          <Route path="/products/:id" component={ProductScreen} />
+        <Route path="/cart/:id?" component={cartScreen} />
+        <Route path="/products/:id" component={ProductScreen} />
+        <Route path="/shipping" component={Shipping} />
+        <Route path="/signin/" component={SignIn}/>
           <Route path="/" component={Home} exact />
         </main>
         <footer className="app__row footer">

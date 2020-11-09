@@ -5,17 +5,25 @@ import { listProducts } from "../actions/productActions";
 
 function Home() {
   const dispatch = useDispatch();
-  const productList = useSelector((state) => state.productList);
+  const {loading,products} = useSelector((state) => state.productList);
   useEffect(() => {
     dispatch(listProducts());
   }, []);
-  return (
-    <>
-      {productList?.products?.map((product) => (
-        <Product key={product._id} product={product} />
-      ))}
-    </>
-  );
+  if(loading){
+    return (
+      <div className="spinner">
+      <i className="fa fa-circle-o-notch" aria-hidden="true"></i>
+      </div>
+    )
+  }else{
+    return (
+      <>
+        {products?.map((product) => (
+          <Product key={product._id} product={product} />
+        ))}
+      </>
+    );
+  }
 }
 
 export default Home;

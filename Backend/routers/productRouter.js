@@ -1,5 +1,4 @@
 const express = require("express");
-const data = require("../../data");
 const Products = require("../models/productModel");
 const expressAsyncHandler = require("express-async-handler");
 

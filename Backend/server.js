@@ -1,5 +1,4 @@
 const express = require("express");
-const data = require("../data.js");
 const dotenv = require('dotenv');
 const mongoose = require("mongoose");
 const app = express();
@@ -10,9 +9,8 @@ const productRouter = require("./routers/productRouter.js");
 const bodyParser = require('body-parser');
 
 dotenv.config();
-
 mongoose.connect(
-  `mongodb+srv://admin:${data.passwords.mongoDb}@cluster0.sd3ae.mongodb.net/shopping?retryWrites=true&w=majority`,
+  `mongodb+srv://admin:${process.env.MONGO_DB_PASSWORD}@cluster0.sd3ae.mongodb.net/${process.env.MONGO_DB_DATABASE}?retryWrites=true&w=majority`,
   {
     useNewUrlParser: true,
     useUnifiedTopology: true,
@@ -25,6 +23,7 @@ mongoose.connect(
 
 app.use(cors());
 app.use(bodyParser.json());
+
 app.use("/api/users", userRouter);
 app.use("/api/products", productRouter);
 /* app.use((err, req, res, next) => {

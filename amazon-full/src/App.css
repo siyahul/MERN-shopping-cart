@@ -41,7 +41,13 @@ a{
   padding: 10px;
 }
 .app__headerLinks{
+  display: flex;
+  align-items: center;
+  flex-direction: row;
   font-size: 1.2rem;
+}
+.app__dropDown{
+  font-size: 1.8rem;
 }
 .app__headerLinks a{
   padding: 1rem;
