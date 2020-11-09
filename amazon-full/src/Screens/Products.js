@@ -85,7 +85,7 @@ function Products({ match }) {
                 setQty(e.target.value);
               }}
             >
-              {[...Array(product.countInStock).keys()].map((value) => (
+              {[...Array(product.countInStock>10?10:product.countInStock).keys()].map((value) => (
                 <option key={value + 1} value={value + 1}>
                   {value + 1}
                 </option>

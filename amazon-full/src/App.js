@@ -1,16 +1,11 @@
-import { useDispatch, useSelector } from "react-redux";
+import {  useSelector } from "react-redux";
 import { BrowserRouter as Router, Link, Route } from "react-router-dom";
-import { clearCart } from "./actions/cartActions";
 import "./App.css";
 import cartScreen from "./Screens/CartScreen";
 import Home from "./Screens/Home";
 import ProductScreen from "./Screens/Products";
 function App() {
   const cart = useSelector((state) => state.cart);
-  const dispatch = useDispatch();
-  function clear() {
-    dispatch(clearCart());
-  }
   return (
     <Router>
       <div className="app__grid">
@@ -21,9 +16,6 @@ function App() {
             </Link>
           </div>
           <div className="app__headerLinks">
-            <button className="app__clearBtn" onClick={clear}>
-              Clear Cart
-            </button>
             <Link to="/cart">
               <i
                 className="fa fa-shopping-cart"
