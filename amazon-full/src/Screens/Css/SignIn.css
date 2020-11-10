@@ -57,10 +57,11 @@
 .error{
     width:200px;
     padding:1rem;
-    background-color: rgb(243, 50, 50);
+    background-color: rgba(243, 50, 50,0.5);
     border-radius: 20px;
     color:white;
     text-align: center;
+    animation:fade 0.5s linear;
 }
 .error p{
     font-size: 1rem;
@@ -71,5 +72,13 @@
     }
     .signIn__email label{
         margin-left: 2rem;
+    }
+}
+@keyframes fade{
+    0%{
+        opacity: 0;
+    }
+    100%{
+        opacity: 1;
     }
 }

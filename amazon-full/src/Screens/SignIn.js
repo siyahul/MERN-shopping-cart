@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { Link } from "react-router-dom";
 import { userSignin } from "../actions/userActions";
 import "./Css/SignIn.css";
 function SignIn(props) {
@@ -8,7 +9,7 @@ function SignIn(props) {
   const dispatch = useDispatch();
   const userSignIn = useSelector((state) => state.userSignIn);
   const { error, userInfo } = userSignIn;
-  const redirect = props.location.search? props.location.search.split('=')[1]:'/'
+  const redirect = props.location.search? props.location.search.split('=')[1]:'/';
   const logIn = (e) => {
     e.preventDefault();
     dispatch(userSignin(email, password));
@@ -19,7 +20,7 @@ function SignIn(props) {
         }else{
             console.log(userInfo);
       }
-  }, [userInfo])
+  }, [userInfo,redirect,props.history])
   return (
     <div className="signIn">
       <p>SignIn</p>
@@ -47,6 +48,7 @@ function SignIn(props) {
         <button type="submit" onClick={logIn}>
           SignIn
         </button>
+        <Link className="signInorSignUp" to={props.location.search? `/signup?redirect=${redirect}`:"/signup"}>Don't have an Acoount?</Link>
       </form>
       {error ? (
         <div className="error">

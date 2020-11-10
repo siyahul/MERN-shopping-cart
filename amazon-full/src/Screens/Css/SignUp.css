@@ -1,0 +1,9 @@
+.signInorSignUp{
+    transition: all 0.2s ease-in-out;
+    font-size: 1.2rem;
+}
+.signInorSignUp:hover{
+    color: cornflowerblue;
+    transition: all 0.2s ease-in-out;
+    text-decoration: underline;
+}
