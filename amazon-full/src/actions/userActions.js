@@ -19,7 +19,7 @@ export const userSignin = (email, password) => async (dispatch) => {
     email: email,
     password: password,
   })
-    .then((data) => {
+    .then(({data}) => {
       dispatch({
         type: USER_SIGNIN_SUCCESS,
         payload: data,
@@ -65,7 +65,7 @@ export const userSignUp = (name, email, password) => async (dispatch) => {
     email: email,
     password: password,
   })
-    .then((data) => {
+    .then(({data}) => {
       dispatch({
         type: USER_SIGNUP_SUCCESS,
         payload: data,

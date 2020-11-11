@@ -41,9 +41,9 @@ function App() {
                 <span className="numberOfItems">{cart.cartItems.length}</span>
               ) : null}
             </Link>{
-              userInfo && userInfo.status===200?
+              userInfo?
               <div className="app__dropDown">
-              <Link to="#"><span>{userInfo.data.name} <i className="fa fa-caret-down"></i></span></Link>
+              <Link to="#"><span>{userInfo.name} <i className="fa fa-caret-down"></i></span></Link>
               <ul>
                 <Link to="#signout" onClick={signOut}>SignOut</Link>
               </ul>

@@ -1,6 +1,6 @@
 const jwt = require('jsonwebtoken')
 
-const generateToken = user =>{
+exports.generateToken = user =>{
     return jwt.sign(
         {
             _id:user._id,
@@ -15,4 +15,26 @@ const generateToken = user =>{
     );
 };
 
-module.exports = generateToken;
+
+exports.isAuth = (req, res, next)=>{
+    const autherization = req.headers.autherization;
+    if (autherization) {
+      const token = autherization.slice(7, autherization.length);
+      jwt.verify(
+        token,
+        process.env.JWT_SECRET || "somethingsecret",
+        (err, decode) => {
+          if (err) {
+            req.status(401).send({ message: "invalid_token" });
+          } else {
+            req.user = decode;
+            next();
+          }
+        }
+      );
+    } else {
+      res.status(401).json({ message: "no token" });
+    }
+  };
+
+  

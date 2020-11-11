@@ -1,26 +1,35 @@
 import React, { memo, useEffect } from "react";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { createOrder } from "../actions/orderActions";
 import ProgressBar from "../Components/ProgressBar";
+import { ORDER_CREATE_RESET } from "../constants/orderConstants";
 import "./Css/PlaceOrder.css";
 
 function PlaceOrder(props) {
   const cart = useSelector((state) => state.cart);
+  const orderCreate = useSelector((state) => state.orderCreate);
+  const dispatch = useDispatch();
   const { shippingAdress } = cart;
   const { payementMethod } = cart;
   const { cartItems } = cart;
-  cart.totalAmount =cartItems.reduce((a, c) => (a + Number(c.price)) + Number(c.qty), 0);
-  cart.tax = (cart.totalAmount/100)*14;
-  cart.shipping = cart.totalAmount>100?0:10;
-  cart.netAmount = cart.totalAmount + cart.tax + cart.shipping;
-
+  const toPrice = (num)=> Number(num.toFixed(2));
+  cart.totalAmount =toPrice(cartItems.reduce((a, c) => (a + Number(c.price)) * Number(c.qty), 0));
+  cart.tax = toPrice((cart.totalAmount/100)*14);
+  cart.shipping = cart.totalAmount>100?toPrice(0):toPrice(10);
+  cart.netAmount = toPrice(cart.totalAmount + cart.tax + cart.shipping);
+  const {loading,success,error,order} = orderCreate;
 
   const placeOrder = ()=>{
-    alert("order Placed")
+    dispatch(createOrder({...cart,orderItems:cart.cartItems}))
   }
 
   useEffect(()=>{
     if(!shippingAdress) props.history.push('/signin');
-  },[shippingAdress,props.history])
+    else if(success){
+      props.history.push(`/order/${order?._id}`);
+      dispatch({type:ORDER_CREATE_RESET})
+    }
+  },[shippingAdress,props.history,success])
 
   return (
     <div className="placeOrder">
