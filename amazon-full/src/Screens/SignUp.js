@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { memo, useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import {userSignUp} from '../actions/userActions'
@@ -93,4 +93,4 @@ function SignUp(props) {
   );
 }
 
-export default SignUp;
+export default memo(SignUp);

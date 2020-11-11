@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { memo, useEffect } from "react";
 import Product from "../Components/Product";
 import { useDispatch, useSelector } from "react-redux";
 import { listProducts } from "../actions/productActions";
@@ -26,4 +26,4 @@ function Home() {
   }
 }
 
-export default Home;
+export default memo(Home);

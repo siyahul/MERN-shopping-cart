@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { memo } from 'react';
 import "./Rating.css"
 
 function Rating({rating,numReviews}) {
@@ -24,4 +24,4 @@ function Rating({rating,numReviews}) {
     )
 }
 
-export default Rating
+export default memo(Rating)

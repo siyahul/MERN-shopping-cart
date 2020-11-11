@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { memo, useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, useHistory } from "react-router-dom";
 import { addToCart, removeFromCart } from "../actions/cartActions";
@@ -124,4 +124,4 @@ function Products({ match }) {
   }
 }
 
-export default Products;
+export default memo(Products);

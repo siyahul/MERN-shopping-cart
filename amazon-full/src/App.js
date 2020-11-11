@@ -1,13 +1,18 @@
+import { memo } from "react";
 import {  useDispatch, useSelector } from "react-redux";
 import { BrowserRouter as Router, Link, Route } from "react-router-dom";
 import { userSignOut } from "./actions/userActions";
 import "./App.css";
 import cartScreen from "./Screens/CartScreen";
 import Home from "./Screens/Home";
+import Payement from "./Screens/Payement";
+import PlaceOrder from "./Screens/PlaceOrder";
 import ProductScreen from "./Screens/Products";
 import Shipping from "./Screens/Shipping";
 import SignIn from "./Screens/SignIn";
 import SignUp from "./Screens/SignUp";
+
+
 function App() {
   const cart = useSelector((state) => state.cart);
   const userSignIn = useSelector(state=>state.userSignIn);
@@ -52,6 +57,8 @@ function App() {
         <main className="app__row main">
         <Route path="/cart/:id?" component={cartScreen} />
         <Route path="/products/:id" component={ProductScreen} />
+        <Route path="/placeorder" component={PlaceOrder} />
+        <Route path="/payement" component={Payement} />
         <Route path="/shipping" component={Shipping} />
         <Route path="/signup/" component={SignUp}/>
         <Route path="/signin/" component={SignIn}/>
@@ -65,4 +72,4 @@ function App() {
   );
 }
 
-export default App;
+export default memo(App);

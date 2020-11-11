@@ -1,9 +1,9 @@
 const express = require("express");
 const bcrypt = require("bcrypt");
 const User = require("../models/userModel");
-const expressAsyncHandler = require("express-async-handler");
 const generateToken = require("../../utils");
 const e = require("express");
+
 
 const userRouter = express.Router();
 
@@ -46,11 +46,11 @@ userRouter.post("/signup", (req, res) => {
       });
     })
     .catch((err) => {
-        if(err.code ===11000)
-            res.status(401).json({ message: "user already exist" });
-        else{
-            res.status(401).json({ message: "can't create user" });
-        }
+      if (err.code === 11000)
+        res.status(401).json({ message: "user already exist" });
+      else {
+        res.status(401).json({ message: "can't create user" });
+      }
     });
 });
 

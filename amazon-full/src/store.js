@@ -12,15 +12,20 @@ const initialState = {
     cartItems: localStorage.getItem("cartItems")
       ? JSON.parse(localStorage.getItem("cartItems"))
       : [],
+    shippingAdress: localStorage.getItem("shippingAddress")
+      ? JSON.parse(localStorage.getItem("shippingAddress"))
+      : null,
+    payementMethod: localStorage.getItem("payementMethod")
+    ? JSON.parse(localStorage.getItem("payementMethod")):"",
   },
   userSignIn: {
-    userInfo:localStorage.getItem("userInfo")
-    ? JSON.parse(localStorage.getItem("userInfo"))
-    : null,
+    userInfo: localStorage.getItem("userInfo")
+      ? JSON.parse(localStorage.getItem("userInfo"))
+      : null,
   },
-  userSignUp:{
-    userInfo:null,
-  }
+  userSignUp: {
+    userInfo: null,
+  },
 };
 const reducer = combineReducers({
   productList: productListReducer,

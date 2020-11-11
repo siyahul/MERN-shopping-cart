@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { memo } from 'react';
 import { Link } from 'react-router-dom';
 import Rating from '../Rating';
 import "./Product.css";
@@ -25,4 +25,4 @@ function Product({product}) {
     )
 }
 
-export default Product
+export default memo(Product)

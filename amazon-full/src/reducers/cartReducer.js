@@ -1,4 +1,6 @@
 import {
+  ADD_PAYEMENT_METHOD,
+  ADD_SHIPPING_ADDRESS,
   ADD_TO_CART,
   CLEAR_CART,
   REMOVE_FROM_CART,
@@ -40,6 +42,10 @@ export const cartReducer = (state = { cartItems: [] }, action) => {
       return newBasket;
     case CLEAR_CART:
       return { ...state, cartItems: [] };
+    case ADD_SHIPPING_ADDRESS:
+      return { ...state, shippingAdress: action.payload };
+    case ADD_PAYEMENT_METHOD:
+      return { ...state, payementMethod: action.payload };
     default:
       return state;
   }
