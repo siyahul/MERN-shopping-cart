@@ -96,6 +96,28 @@
     cursor: pointer;
     margin:1rem
  }
+ .notYourOrder{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    flex:1;
+    min-height: 80vh;
+ }
+ .error__box{
+     width:60% !important;
+     border-radius:1rem;
+     background-color:red;
+     color:white;
+     display: flex;
+     align-items: center;
+     justify-content:center;
+ }
+ .error__box p{
+     padding:1rem;
+     font-size:3rem !important;
+     text-align:center;
+ }
 .price{
     font-size:2rem;
     font-weight:900;

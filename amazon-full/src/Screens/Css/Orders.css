@@ -1,0 +1,42 @@
+.orders{
+    flex:1;
+    display: flex;
+    flex-direction: column;
+    align-items:center;
+    justify-content:center;
+    width: 100%;
+    min-height: 80vh;
+}
+.Orders__order{
+    display: flex;
+    justify-content:space-between;
+    width: 100%;
+    flex-direction: column;
+    align-items:center;
+    padding:1rem;
+    border-radius:1rem;
+    border:1px solid lightgrey;
+    margin:1rem;
+}
+.orderItems{
+    display: flex;
+    width: 100%;
+    flex-direction: row;
+    align-items: center;
+    justify-content:space-between;
+}
+.orderImage{
+    margin:1rem;
+    width:6rem;
+    object-fit: contain;
+}
+.orderItems p{
+    font-size:1.5rem;
+}
+.orders p{
+    font-size:1.6rem;
+}
+.orders p span{
+    font-size:2rem;
+    font-weight:900;
+}

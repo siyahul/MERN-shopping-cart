@@ -1,16 +1,15 @@
 const express = require("express");
-const jwt = require("jsonwebtoken");
 const { isAuth } = require("../../utils");
 const Order = require("../models/orderModel");
 const orderRouter = express.Router();
 
-orderRouter.get("/", (req, res) => {
-  Order.find()
-    .then((data) => {
-      res.status(200).json(data);
+orderRouter.get("/", isAuth,(req, res) => {
+  Order.find({ userInfo: req.user._id })
+    .then((order) => {
+      res.status(200).json(order);
     })
     .catch((err) => {
-      res.status(400).json(err);
+      res.status(400).json({ message: "order fetch failed", error: err });
     });
 });
 
@@ -40,11 +39,15 @@ orderRouter.post("/", isAuth, (req, res) => {
   }
 });
 
-orderRouter.get("/:id", (req, res) => {
+orderRouter.get("/:id", isAuth, (req, res) => {
   const id = req.params.id;
   Order.findById(id)
     .then((data) => {
-      res.status(200).json(data);
+      if (String(req.user._id) === String(data.userInfo)) {
+        res.status(200).json(data);
+      } else {
+        res.status(401).json({ message: "Not Your Order" });
+      }
     })
     .catch((err) => {
       res.status(400).json(err);

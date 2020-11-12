@@ -9,12 +9,12 @@ function Products({ match }) {
   const [qty, setQty] = useState(1);
   const history = useHistory();
   const dispatch = useDispatch();
-  const [inCart, setInCart] = useState(false);
+  const [inCart] = useState(false);
   const { product, loading } = useSelector((state) => state.productDetails);
   const cart = useSelector((state) => state.cart);
   useEffect(() => {
     dispatch(detailsProducts(match.params.id));
-  }, []);
+  }, [match.params.id,dispatch]);
   const addToBasket = () => {
     dispatch(addToCart(product._id, qty));
   };

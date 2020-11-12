@@ -5,6 +5,8 @@ import { userSignOut } from "./actions/userActions";
 import "./App.css";
 import cartScreen from "./Screens/CartScreen";
 import Home from "./Screens/Home";
+import OrderDetails from "./Screens/OrderDetails";
+import Orders from "./Screens/Orders";
 import Payement from "./Screens/Payement";
 import PlaceOrder from "./Screens/PlaceOrder";
 import ProductScreen from "./Screens/Products";
@@ -46,6 +48,7 @@ function App() {
               <Link to="#"><span>{userInfo.name} <i className="fa fa-caret-down"></i></span></Link>
               <ul>
                 <Link to="#signout" onClick={signOut}>SignOut</Link>
+                <Link to="/orders">Orders</Link>
               </ul>
               </div>
               :
@@ -56,7 +59,9 @@ function App() {
         </header>
         <main className="app__row main">
         <Route path="/cart/:id?" component={cartScreen} />
+        <Route path="/order/:id" component={OrderDetails} />
         <Route path="/products/:id" component={ProductScreen} />
+        <Route path="/orders" component={Orders}/>
         <Route path="/placeorder" component={PlaceOrder} />
         <Route path="/payement" component={Payement} />
         <Route path="/shipping" component={Shipping} />

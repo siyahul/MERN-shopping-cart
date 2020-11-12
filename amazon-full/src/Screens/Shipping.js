@@ -26,10 +26,18 @@ function Shipping(props) {
   });
   useEffect(() => {
     if (!userSignIn.userInfo) props.history.push("/signin");
-  }, [props.history,userSignIn.userInfo]);
+  }, [props.history, userSignIn.userInfo]);
   const addAddress = (e) => {
     e.preventDefault();
-    if (value.mobile !== "" && value.fullName !== "") {
+    if (
+      value.fullName !== "" &&
+      value.mobile !== "" &&
+      value.appartment !== "" &&
+      value.street !== "" &&
+      value.city !== "" &&
+      value.state !== "" &&
+      value.pincode !== ""
+    ) {
       dispatch(
         addShippingAddress({
           fullName: value.fullName,
