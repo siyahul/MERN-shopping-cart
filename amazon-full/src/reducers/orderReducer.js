@@ -10,6 +10,10 @@ import {
   ORDER_DETAILS_REQUEST,
   ORDER_DETAILS_RESET,
   ORDER_DETAILS_SUCCESS,
+  ORDER_PAY_RESET,
+  PAY_ORDER_FAIL,
+  PAY_ORDER_REQUEST,
+  PAY_ORDER_SUCCESS,
 } from "../constants/orderConstants";
 
 export const orderCreateReducer = (state = {}, action) => {
@@ -32,29 +36,49 @@ export const orderCreateReducer = (state = {}, action) => {
   }
 };
 
-export const orderDetailsReducer = (state = {loading: true},action) => {
+export const orderDetailsReducer = (state = { loading: true }, action) => {
   switch (action.type) {
     case ORDER_DETAILS_REQUEST:
-      return {...state, loading:true};
+      return { ...state, loading: true };
     case ORDER_DETAILS_SUCCESS:
-      return {...state, loading:false, orderDetails:action.payload};
-    case ORDER_DETAILS_FAIL :
-      return {...state, loading: false, error: action.payload};
-      case ORDER_DETAILS_RESET :
-        return {};
+      return { ...state, loading: false, orderDetails: action.payload };
+    case ORDER_DETAILS_FAIL:
+      return { ...state, loading: false, error: action.payload };
+    case ORDER_DETAILS_RESET:
+      return {};
     default:
       return state;
   }
-}
-export const ordersListReducer = (state = {loading: true},action) => {
+};
+export const ordersListReducer = (state = { loading: true }, action) => {
   switch (action.type) {
     case ORDERS_LIST_REQUEST:
-      return {...state, loading:true};
+      return { ...state, loading: true };
     case ORDERS_LIST_SUCCESS:
-      return {...state, loading:false, orders:action.payload};
-    case ORDERS_LIST_FAIL :
-      return {...state, loading: false, error: action.payload};
+      return { ...state, loading: false, orders: action.payload };
+    case ORDERS_LIST_FAIL:
+      return { ...state, loading: false, error: action.payload };
     default:
       return state;
   }
-}
+};
+
+export const payOrderReducer = (state={}, action) => {
+  switch (action.type) {
+    case PAY_ORDER_REQUEST:
+      return { ...state, loading: true };
+    case PAY_ORDER_SUCCESS:
+      return { ...state, loading: false, success: true };
+    case PAY_ORDER_FAIL:
+      return {
+        ...state,
+        loading: false,
+        success: false,
+        error: action.payload,
+      };
+      case ORDER_PAY_RESET:
+        return {}
+    default:
+      return state;
+  }
+};
