@@ -32,7 +32,7 @@ function SignIn(props) {
             name="email"
             type="text"
             placeholder="Email"
-            onChange={(e) => {setEmail(e.target.value); }}
+            onChange={(e) => setEmail(e.target.value)}
           />
         </div>
         <div className="signIn__email">

@@ -3,7 +3,6 @@ import {  useDispatch, useSelector } from "react-redux";
 import { BrowserRouter as Router, Link, Route } from "react-router-dom";
 import { userSignOut } from "./actions/userActions";
 import "./App.css";
-import Admin from "./Screens/Admin";
 import cartScreen from "./Screens/CartScreen";
 import Home from "./Screens/Home";
 import OrderDetails from "./Screens/OrderDetails";
@@ -14,8 +13,6 @@ import ProductScreen from "./Screens/Products";
 import Shipping from "./Screens/Shipping";
 import SignIn from "./Screens/SignIn";
 import SignUp from "./Screens/SignUp";
-import AllProducts from "./Screens/AppProducts.js";
-import AllOrders from "./Screens/AllOrders";
 
 
 function App() {
@@ -52,9 +49,6 @@ function App() {
               <ul>
                 <Link to="#signout" onClick={signOut}>SignOut</Link>
                 <Link to="/orders">Orders</Link>
-                {
-                  userInfo.isAdmin?<Link to="/admin">Admin</Link>:null
-                }
               </ul>
               </div>
               :
@@ -64,8 +58,6 @@ function App() {
           </div>
         </header>
         <main className="app__row main">
-        <Route path="/admin/products" component={AllProducts} />
-        <Route path="/admin/orders" component={AllOrders} />
         <Route path="/cart/:id?" component={cartScreen} />
         <Route path="/order/:id" component={OrderDetails} />
         <Route path="/products/:id" component={ProductScreen} />
@@ -73,7 +65,6 @@ function App() {
         <Route path="/placeorder" component={PlaceOrder} />
         <Route path="/payement" component={Payement} />
         <Route path="/shipping" component={Shipping} />
-        <Route path="/admin" exact component={Admin} />
         <Route path="/signup/" component={SignUp}/>
         <Route path="/signin/" component={SignIn}/>
           <Route path="/" component={Home} exact />

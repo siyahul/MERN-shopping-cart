@@ -20,11 +20,6 @@
     flex: 2;
     object-fit: contain;
 }
-.products__image img{
-    width:100%;
-    min-width:500px;
-    object-fit: contain;
-}
 .products__info{
     flex: 1;
     align-items: flex-start;
@@ -117,11 +112,6 @@
     }
     .products__image{
         width: 100%;
-        object-fit: contain;
-
-    }
-    .products__image img{
-        min-width: 200px;
         object-fit: contain;
     }
     .products__image img{
