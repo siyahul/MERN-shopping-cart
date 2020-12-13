@@ -17,7 +17,7 @@ function PlaceOrder(props) {
   cart.tax = toPrice((cart.totalAmount/100)*14);
   cart.shipping = cart.totalAmount>100?toPrice(0):toPrice(10);
   cart.netAmount = toPrice(cart.totalAmount + cart.tax + cart.shipping);
-  const {loading,success,error,order} = orderCreate;
+  const {success,order} = orderCreate;
 
   const placeOrder = ()=>{
     dispatch(createOrder({...cart,orderItems:cart.cartItems}))
@@ -26,10 +26,10 @@ function PlaceOrder(props) {
   useEffect(()=>{
     if(!shippingAdress) props.history.push('/signin');
     else if(success){
-      props.history.push(`/order/${order?._id}`);
+      props.history.push(`/order/${order._id}`);
       dispatch({type:ORDER_CREATE_RESET})
     }
-  },[shippingAdress,props.history,success])
+  },[shippingAdress,props.history,success,dispatch,order?._id])
 
   return (
     <div className="placeOrder">
