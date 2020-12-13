@@ -1,4 +1,4 @@
-import axios from "../axios";
+import Axios from "axios";
 import {
   USER_LOGOUT,
   USER_SIGNIN_FAIL,
@@ -15,7 +15,7 @@ export const userSignin = (email, password) => async (dispatch) => {
     type: USER_SIGNIN_REQUEST,
     payload: { email, password },
   });
-  axios.post("api/users/signin", {
+  Axios.post("http://192.168.1.10:5000/api/users/signin", {
     email: email,
     password: password,
   })
@@ -60,7 +60,7 @@ export const userSignUp = (name, email, password) => async (dispatch) => {
     type: USER_SIGNUP_REQUEST,
     payload: { name, email, password },
   });
-  axios.post("api/users/signup", {
+  Axios.post("http://192.168.1.10:5000/api/users/signup", {
     name: name,
     email: email,
     password: password,

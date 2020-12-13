@@ -25,12 +25,6 @@ const orderSchema = new mongoose.Schema(
       pincode: { type: Number, required: true },
     },
     payementMethod: { type: String, required: true },
-    payementResult :{
-      id: { type:String},
-      status: { type:String},
-      updateTime: { type:String},
-      email_address: { type:String},
-    },
     itemsPrice: { type: Number, required: true },
     shippingPrice: { type: Number, required: true },
     taxPrice: { type: Number, required: true },
