@@ -5,6 +5,7 @@ const Products = require("../models/productModel");
 const productRouter = express.Router();
 
 productRouter.get("/", (req, res) => {
+  console.log(req.ip);
   Products.find()
     .then((data) => {
       res.status(201).json(data);
